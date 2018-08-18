@@ -1,4 +1,4 @@
-<h3>Post a comment</h3>
+<h3><%= @article.comments.empty? ? 'Be the first to post a comment!' : 'Post a comment' %></h3>
 
 <%= form_for [@article, @comment] do |f| %>
   <p>
