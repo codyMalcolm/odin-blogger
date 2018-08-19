@@ -5,9 +5,12 @@
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
+<% if @article.image.exists? %>
+  <p> <%= image_tag @article.image.url(:medium) %></p>
+<% end %>
 <p><%= @article.body %></p>
 <br />
-<% if !@article.comments.empty? then %>
+<% if !@article.comments.empty? %>
   <h3>Comments (<%= @article.comments.size%>)</h3>
 <% end %>
 <%= render partial: 'articles/comment', collection: @article.comments %>
