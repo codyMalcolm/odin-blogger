@@ -6,7 +6,7 @@
   <% end %>
 </p>
 <% if @article.image.exists? %>
-  <p> <%= image_tag @article.image.url(:medium) %></p>
+  <p> <%= image_tag @article.image.url(:medium), class: "testing" %></p>
 <% end %>
 <p><%= @article.body %></p>
 <br />
@@ -18,10 +18,12 @@
 <br />
 <%= link_to '<< Back to Articles List', articles_path %>
 <br />
-<br />
-<%= link_to 'Edit this article', edit_article_path(@article) %>
-<br />
-<br />
-<%= link_to 'Delete this article', article_path(@article), method: :delete, data: {confirm: "Really delete this article?"} %>
-<br />
-<br />
+<% if logged_in? %>
+  <br />
+  <%= link_to 'Edit this article', edit_article_path(@article) %>
+  <br />
+  <br />
+  <%= link_to 'Delete this article', article_path(@article), method: :delete, data: {confirm: "Really delete this article?"} %>
+  <br />
+  <br />
+<% end %>
